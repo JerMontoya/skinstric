@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
   const titleRef = useRef(null);
@@ -15,6 +16,12 @@ export default function Page() {
 
   const leftSquareRef = useRef(null);
   const rightSquareRef = useRef(null);
+
+  const router = useRouter();
+
+const handleRightClick = () => {
+  router.push("/name");
+};
 
   useGSAP(() => {
     const title = document.querySelector("h1");
@@ -84,6 +91,7 @@ export default function Page() {
 
         <button
           id="right-btn"
+          onClick={handleRightClick}
           ref={rightBtnRef}
           className="absolute top-1/2 left-[-5%] transform -translate-y-1/2 px-4 py-2 flex items-center gap-6 whitespace-nowrap cursor-pointer"
         >
