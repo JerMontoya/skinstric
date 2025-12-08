@@ -9,7 +9,7 @@ export default function Header() {
         <span className="text-gray-400 text-[10px] font-semibold">[ INTRO ]</span>
       </div>
 
-      {/* Right side button */}
+      {/* Right side non-clickable button */}
       <button className="bg-black text-white px-3 py-2 text-[8px] font-semibold tracking-tighter">
         ENTER CODE
       </button>
