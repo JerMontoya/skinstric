@@ -63,7 +63,7 @@ export default function Page() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      <Header />
+      <Header variant="noButton" />
 
       {/* Small top text */}
       <div className="absolute top-16 left-9 text-[12px] font-semibold">

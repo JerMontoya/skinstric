@@ -137,7 +137,7 @@ export default function Page() {
 
   return (
     <div>
-      <Header />
+      <Header variant="noButton"/>
       <div className="absolute top-16 left-9 text-[12px] font-semibold">
         TO START ANALYSIS
       </div>
