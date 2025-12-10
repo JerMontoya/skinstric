@@ -16,42 +16,50 @@ export default function Page() {
   const [hasPhoto, setHasPhoto] = useState(false);
   const [photoData, setPhotoData] = useState<string | null>(null);
 
-  useEffect(() => {
-    async function enableCamera() {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: "user" }, // front camera
-        });
-
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream;
-        }
-      } catch (err) {
-        console.error(err);
-        setError("Camera access denied or unavailable.");
-      }
-    }
-
-    enableCamera();
-  }, []);
+  const streamRef = useRef<MediaStream | null>(null);
 
   useEffect(() => {
+    const videoElement = videoRef.current; // copy ref locally
+    let active = true;
+
     const startCamera = async () => {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
           video: { facingMode: "user" },
         });
 
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream;
-          await videoRef.current.play();
+        if (!active) {
+          // if component unmounted before stream resolves
+          stream.getTracks().forEach((track) => track.stop());
+          return;
+        }
+
+        streamRef.current = stream;
+
+        if (videoElement) {
+          videoElement.srcObject = stream;
+          await videoElement.play();
         }
       } catch (err) {
         console.error("Camera error:", err);
+        setError("Camera access denied or unavailable.");
       }
     };
 
     startCamera();
+
+    return () => {
+      active = false;
+
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach((track) => track.stop());
+        streamRef.current = null;
+      }
+
+      if (videoElement) {
+        videoElement.srcObject = null;
+      }
+    };
   }, []);
 
   const capturePhoto = () => {
@@ -63,39 +71,19 @@ export default function Page() {
     const context = canvas.getContext("2d");
     if (!context) return;
 
-    // Set canvas size = video size
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
 
-    // Draw current frame onto canvas
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-    // Save image data URL
     const dataUrl = canvas.toDataURL("image/png");
     setPhotoData(dataUrl);
 
-    // Switch UI state
     setHasPhoto(true);
 
-    // Stop the camera
-    (video.srcObject as MediaStream)
-      ?.getTracks()
-      .forEach((track) => track.stop());
+    // Instead of stopping the stream, just pause the video
+    video.pause();
   };
-
-  // Retake photo
-  //   const retake = () => {
-  //     setHasPhoto(false);
-  //     setPhotoData(null);
-
-  // Restart camera
-  //     navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
-  //       if (videoRef.current) {
-  //         videoRef.current.srcObject = stream;
-  //         videoRef.current.play();
-  //       }
-  //     });
-  //   };
 
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center relative">
@@ -120,7 +108,8 @@ export default function Page() {
 
       {/* FROZEN PHOTO */}
       {hasPhoto && photoData && (
-        <img
+        <Image
+          alt="photo"
           src={photoData}
           className="absolute inset-0 w-full h-full object-cover"
         />
