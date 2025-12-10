@@ -65,9 +65,9 @@ export default function Page() {
       );
 
       // Wait a short time for UI
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 300));
 
-      router.push("/demographics");
+      router.push("/analysis");
     } catch (error) {
       console.error(error);
       setLoading(false);
