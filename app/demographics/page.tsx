@@ -82,8 +82,8 @@ export default function Page() {
   };
 
   const displayData = dataMap[selectedCategory];
-  const topKey = topValue(displayData);
-  const topPerc = displayData[topKey];
+  // const topKey = topValue(displayData);
+  // const topPerc = displayData[topKey];
 
   return (
     <div>
