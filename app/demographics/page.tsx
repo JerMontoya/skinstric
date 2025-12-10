@@ -24,6 +24,8 @@ export default function Page() {
   const [selectedPercentage, setSelectedPercentage] = useState<number>(0);
 
   const [confirmedRace, setConfirmedRace] = useState<string | null>(null);
+  const [confirmedAge, setConfirmedAge] = useState<string | null>(null);
+  const [confirmedGender, setConfirmedGender] = useState<string | null>(null);
 
   const [selectedCategory, setSelectedCategory] = useState<
     "race" | "age" | "gender"
@@ -83,9 +85,6 @@ export default function Page() {
   const topKey = topValue(displayData);
   const topPerc = displayData[topKey];
 
-  //   const topValue = (obj: Record<string, number>) =>
-  //     Object.entries(obj).sort((a, b) => b[1] - a[1])[0][0];
-
   return (
     <div>
       <Header variant="noButton" spanText="[ ANALYSIS ]" />
@@ -124,7 +123,7 @@ export default function Page() {
             onClick={() => setSelectedCategory("age")}
           >
             <div className="text-sm font-semibold pb-2">
-              {topValue(results.age)}
+              {confirmedAge ?? topValue(results.age)}
             </div>
             <div className="text-med font-semibold">AGE</div>
           </div>
@@ -138,8 +137,10 @@ export default function Page() {
             onClick={() => setSelectedCategory("gender")}
           >
             <div className="text-sm font-semibold pb-2">
-              {topValue(results.gender).charAt(0).toUpperCase() +
-                topValue(results.gender).slice(1)}
+              {(confirmedGender ?? topValue(results.gender))
+                .charAt(0)
+                .toUpperCase() +
+                (confirmedGender ?? topValue(results.gender)).slice(1)}
             </div>
             <div className="text-med font-semibold">SEX</div>
           </div>
@@ -264,9 +265,12 @@ export default function Page() {
           <button
             className="w-[95px] h-[35px] border bg-[#1A1B1C] text-white font-semibold text-[14px] cursor-pointer"
             onClick={() => {
-              if (selectedRace) {
-                setConfirmedRace(selectedRace);
-              }
+              if (!selectedRace) return;
+
+              if (selectedCategory === "race") setConfirmedRace(selectedRace);
+              if (selectedCategory === "age") setConfirmedAge(selectedRace);
+              if (selectedCategory === "gender")
+                setConfirmedGender(selectedRace);
             }}
           >
             CONFIRM
