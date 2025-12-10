@@ -120,7 +120,7 @@ export default function Page() {
         </div>
       </div>
 
-      <Link href="/name">
+      <Link href="/proceed">
         <button className="absolute bottom-2 left-7 px-4 py-2 flex items-center gap-6 whitespace-nowrap cursor-pointer">
           <div className="w-10 h-10 rotate-45 border border-[#1A1B1C] flex items-center justify-center">
             <FontAwesomeIcon

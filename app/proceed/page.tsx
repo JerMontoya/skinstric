@@ -38,6 +38,10 @@ export default function Page() {
       reader.onerror = (error) => reject(error);
     });
 
+  const handleCameraClick = () => {
+    router.push("/camera");
+  };
+
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -167,7 +171,10 @@ export default function Page() {
               ref={leftSquare3}
             ></div>
           </div>
-          <button className="absolute top-[35%] cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105">
+          <button
+            className="absolute top-[35%] cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105"
+            onClick={handleCameraClick}
+          >
             <Image
               src="/camera-icon.jpg"
               alt="camera"
