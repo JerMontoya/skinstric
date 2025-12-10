@@ -47,19 +47,27 @@ export default function Page() {
     try {
       const base64 = await convertToBase64(file);
 
-      await Promise.all([
-        fetch(
-          "https://us-central1-frontend-simplified.cloudfunctions.net/skinstricPhaseTwo",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ image: base64 }),
-          }
-        ),
-        new Promise((resolve) => setTimeout(resolve, 2000)), // 2-second delay
-      ]);
+      const response = await fetch(
+        "https://us-central1-frontend-simplified.cloudfunctions.net/skinstricPhaseTwo",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ image: base64 }),
+        }
+      );
 
-      router.push("/analysis");
+      const apiResults = await response.json();
+
+      // Save to localStorage
+      localStorage.setItem(
+        "demographicsResults",
+        JSON.stringify(apiResults.data)
+      );
+
+      // Wait a short time for UI
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      router.push("/demographics");
     } catch (error) {
       console.error(error);
       setLoading(false);
@@ -137,7 +145,7 @@ export default function Page() {
 
   return (
     <div>
-      <Header variant="noButton"/>
+      <Header variant="noButton" />
       <div className="absolute top-16 left-9 text-[12px] font-semibold">
         TO START ANALYSIS
       </div>
