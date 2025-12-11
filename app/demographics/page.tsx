@@ -89,22 +89,22 @@ export default function Page() {
 
       <div className="absolute top-20 left-9 leading-relaxed">
         <div className="text-[15px] font-semibold mb-1">A.I ANALYSIS</div>
-        <div className="sm:text-7xl text-4xl tracking-tighter">DEMOGRAPHICS</div>
+        <div className="lg:text-7xl text-4xl tracking-tighter">DEMOGRAPHICS</div>
         <div className="text-[14px]">PREDICTED RACE & AGE</div>
       </div>
 
-      <div className="flex flex-col sm:flex-row items-center justify-between relative p-8">
+      <div className="flex flex-col lg:flex-row items-center justify-between relative p-8">
         {/* LEFT CARDS */}
-        <div className="w-full sm:w-42">
+        <div className="w-full lg:w-42">
           <div
-            className={`sm:absolute static border-t border-black w-full sm:w-42 h-[82px] sm:top-[235px] sm:mt-0 mt-45 mb-3 sm:left-8 p-4 cursor-pointer ${
+            className={`lg:absolute static border-t border-black w-full lg:w-42 h-[82px] lg:top-[235px] lg:mt-0 mt-45 mb-3 lg:left-8 p-4 cursor-pointer ${
               selectedCategory === "race"
                 ? "bg-[#1A1B1C] text-white"
                 : "bg-[#E1E1E2] text-black"
             }`}
             onClick={() => setSelectedCategory("race")}
           >
-            <div className="text-sm font-semibold pb-2">
+            <div className="text-lg font-semibold pb-2">
               {confirmedRace
                 ? confirmedRace.charAt(0).toUpperCase() + confirmedRace.slice(1)
                 : ""}
@@ -113,28 +113,28 @@ export default function Page() {
           </div>
 
           <div
-            className={`sm:absolute static mb-3 border-t border-black w-full sm:w-42 h-[82px] top-[330px] left-8 p-4 cursor-pointer ${
+            className={`lg:absolute static mb-3 border-t border-black w-full lg:w-42 h-[82px] top-[330px] left-8 p-4 cursor-pointer ${
               selectedCategory === "age"
                 ? "bg-[#1A1B1C] text-white"
                 : "bg-[#E1E1E2] text-black"
             }`}
             onClick={() => setSelectedCategory("age")}
           >
-            <div className="text-sm font-semibold pb-2">
+            <div className="text-lg font-semibold pb-2">
               {confirmedAge ?? topValue(results.age)}
             </div>
             <div className="text-med font-semibold">AGE</div>
           </div>
 
           <div
-            className={`sm:absolute static mb-3 border-t border-black w-full sm:w-42 h-[82px] top-[425px] left-8 p-4 cursor-pointer ${
+            className={`lg:absolute static mb-3 border-t border-black w-full lg:w-42 h-[82px] top-[425px] left-8 p-4 cursor-pointer ${
               selectedCategory === "gender"
                 ? "bg-[#1A1B1C] text-white"
                 : "bg-[#F3F3F4] text-black"
             }`}
             onClick={() => setSelectedCategory("gender")}
           >
-            <div className="text-sm font-semibold pb-2">
+            <div className="text-lg font-semibold pb-2">
               {(confirmedGender ?? topValue(results.gender))
                 .charAt(0)
                 .toUpperCase() +
@@ -145,8 +145,8 @@ export default function Page() {
         </div>
 
         {/* MIDDLE PANEL */}
-        <div className="sm:absolute static mb-5 w-full sm:w-[925px] h-[425px] top-[235px] left-54 opacity-100 bg-[#F3F3F4] flex justify-between border-t border-black">
-          <div className="hidden sm:block text-[44px] ml-4">
+        <div className="lg:absolute static mb-5 w-full lg:w-[925px] h-[425px] top-[235px] left-54 opacity-100 bg-[#F3F3F4] flex justify-between border-t border-black">
+          <div className="hidden lg:block text-[44px] ml-4">
             {selectedRace
               ? selectedRace.charAt(0).toUpperCase() + selectedRace.slice(1)
               : ""}
@@ -188,7 +188,7 @@ export default function Page() {
         </div>
 
         {/* RIGHT PANEL: Full race data */}
-        <div className="sm:absolute static mb-10 border-t border-black w-full sm:w-[330px] h-[425px] top-[235px] right-8 opacity-100 bg-[#F3F3F4]">
+        <div className="lg:absolute static mb-10 border-t border-black w-full lg:w-[330px] h-[425px] top-[235px] right-8 opacity-100 bg-[#F3F3F4]">
           <div className="flex justify-between p-4">
             <div className="text-[16px] text-[#1A1B1C] font-medium tracking-tighter">
               {selectedCategory.toUpperCase()}
@@ -251,7 +251,7 @@ export default function Page() {
         </Link>
 
         {/* Center: Info text */}
-        <div className="sm:text-base text-[13px] text-[#A0A4AB] text-center">
+        <div className="lg:text-base text-[13px] text-[#A0A4AB] text-center">
           If A.I. estimate is wrong, select the correct one.
         </div>
 

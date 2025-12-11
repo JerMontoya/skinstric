@@ -70,18 +70,18 @@ export default function Page() {
         ref={leftSquareRef}
         className="absolute top-[55%] -translate-y-[55%]
          /* Desktop layout */
-          sm:left-[-300px]
+          md:left-[-300px]
 
          /* Mobile layout */
-         left-1/2 -translate-x-1/2 sm:translate-x-0
-         w-[250px] h-[250px] sm:w-[515px] sm:h-[515px] "
+         left-1/2 -translate-x-1/2 md:translate-x-0
+         w-[250px] h-[250px] md:w-[515px] md:h-[515px] "
       >
-        <div className="absolute inset-0 border-2 border-[#E5E6E9] sm:border-dashed sm:border-[#A0A4AB] rotate-45 opacity-100 pointer-events-none"></div>
+        <div className="absolute inset-0 border-2 border-[#E5E6E9] md:border-dashed md:border-[#A0A4AB] rotate-45 opacity-100 pointer-events-none"></div>
 
         <button
           id="left-btn"
           ref={leftBtnRef}
-          className="absolute top-1/2 left-[70%] transform -translate-y-1/2 px-4 py-2 items-center gap-6 whitespace-nowrap cursor-pointer hidden sm:flex"
+          className="absolute top-1/2 left-[70%] transform -translate-y-1/2 px-4 py-2 items-center gap-6 whitespace-nowrap cursor-pointer hidden md:flex"
         >
           <div className="w-8 h-8 rotate-45 border border-[#1A1B1C] flex items-center justify-center">
             <FontAwesomeIcon icon={faPlay} className="w-3 h-3 rotate-20" />
@@ -99,24 +99,24 @@ export default function Page() {
     
 
           /* Desktop layout */
-          sm:right-[-300px]
+          md:right-[-300px]
 
           /* Mobile layout */
-          right-1/2 translate-x-1/2 sm:translate-x-0
-          w-[325px] h-[325px] sm:w-[515px] sm:h-[515px]
+          right-1/2 translate-x-1/2 md:translate-x-0
+          w-[325px] h-[325px] md:w-[515px] md:h-[515px]
         "
       >
-        <div className="absolute inset-0 border-2 border-[#E5E6E9] sm:border-dashed sm:border-[#A0A4AB] rotate-45 opacity-100"></div>
+        <div className="absolute inset-0 border-2 border-[#E5E6E9] md:border-dashed md:border-[#A0A4AB] rotate-45 opacity-100"></div>
 
         <button
           id="right-btn"
           onClick={handleRightClick}
           ref={rightBtnRef}
-          className="absolute sm:top-1/2 top-[85%] sm:left-[-5%] left-[32%] transform -translate-y-1/2 px-4 py-2 items-center sm:gap-6 gap-3 whitespace-nowrap cursor-pointer flex"
+          className="absolute md:top-1/2 top-[85%] md:left-[-5%] left-[32%] transform -translate-y-1/2 px-4 py-2 items-center md:gap-6 gap-3 whitespace-nowrap cursor-pointer flex"
         >
-          <div className="sm:text-[14px] text-[10px]">TAKE TEST</div>
-          <div className="sm:w-8 sm:h-8 w-5 h-5 rotate-45 border border-[#1A1B1C] flex items-center justify-center">
-            <FontAwesomeIcon icon={faPlay} className="sm:text-[16px] text-[8px] rotate-70" />
+          <div className="md:text-[14px] text-[10px]">TAKE TEST</div>
+          <div className="md:w-8 md:h-8 w-5 h-5 rotate-45 border border-[#1A1B1C] flex items-center justify-center">
+            <FontAwesomeIcon icon={faPlay} className="md:text-[16px] text-[8px] rotate-70" />
           </div>
         </button>
       </div>
@@ -126,8 +126,8 @@ export default function Page() {
         <h1
           ref={titleRef}
           className=" font-light text-gray-800 text-center
-      md:text-8xl
-      sm:text-6xl
+      lg:text-8xl
+      md:text-6xl
       text-5xl"
         >
           Sophisticated <br /> skincare
@@ -135,7 +135,7 @@ export default function Page() {
       </div>
 
       {/* bottom text */}
-      <div className="absolute sm:text-left text-center sm:left-3 left-47 sm:bottom-13 bottom-70 sm:w-[350px] w-[250px] sm:text-[14px] text-[10px] leading-snug text-[#A0A4AB] sm:text-[#1A1B1C]">
+      <div className="absolute md:text-left text-center md:translate-x-0 md:left-3 left-1/2 -translate-x-1/2 md:bottom-13 bottom-73 md:w-[350px] w-[250px] md:text-[14px] text-[10px] leading-snug text-[#A0A4AB] md:text-[#1A1B1C]">
         SKINSTRIC DEVELOPED AN A.I. THAT CREATES A HIGHLY-PERSONALIZED ROUTINE
         TAILORED TO WHAT YOUR SKIN NEEDS.
       </div>
