@@ -19,11 +19,14 @@ export default function Page() {
 
   const router = useRouter();
 
-const handleRightClick = () => {
-  router.push("/name");
-};
+  const handleRightClick = () => {
+    router.push("/name");
+  };
 
   useGSAP(() => {
+
+    if (typeof window === "undefined" || window.innerWidth < 640) return;
+    
     const title = document.querySelector("h1");
     const leftBtn = document.querySelector("#left-btn");
     const rightBtn = document.querySelector("#right-btn");
@@ -65,14 +68,20 @@ const handleRightClick = () => {
       <div
         id="left-square"
         ref={leftSquareRef}
-        className="absolute top-1/2 -translate-y-1/2 left-[-300px] w-[515px] h-[515px]"
+        className="absolute top-[55%] -translate-y-[55%]
+         /* Desktop layout */
+          sm:left-[-300px]
+
+         /* Mobile layout */
+         left-1/2 -translate-x-1/2 sm:translate-x-0
+         w-[250px] h-[250px] sm:w-[515px] sm:h-[515px] "
       >
-        <div className="absolute inset-0 border-2 border-dashed border-[#A0A4AB] rotate-45 opacity-100 pointer-events-none"></div>
+        <div className="absolute inset-0 border-2 border-[#E5E6E9] sm:border-dashed sm:border-[#A0A4AB] rotate-45 opacity-100 pointer-events-none"></div>
 
         <button
           id="left-btn"
           ref={leftBtnRef}
-          className="absolute top-1/2 left-[70%] transform -translate-y-1/2 px-4 py-2 flex items-center gap-6 whitespace-nowrap cursor-pointer"
+          className="absolute top-1/2 left-[70%] transform -translate-y-1/2 px-4 py-2 items-center gap-6 whitespace-nowrap cursor-pointer hidden sm:flex"
         >
           <div className="w-8 h-8 rotate-45 border border-[#1A1B1C] flex items-center justify-center">
             <FontAwesomeIcon icon={faPlay} className="w-3 h-3 rotate-20" />
@@ -85,19 +94,29 @@ const handleRightClick = () => {
       <div
         id="right-square"
         ref={rightSquareRef}
-        className="absolute top-1/2 -translate-y-1/2 right-[-300px] w-[515px] h-[515px]"
+        className="
+          absolute top-[55%] -translate-y-[55%]
+    
+
+          /* Desktop layout */
+          sm:right-[-300px]
+
+          /* Mobile layout */
+          right-1/2 translate-x-1/2 sm:translate-x-0
+          w-[325px] h-[325px] sm:w-[515px] sm:h-[515px]
+        "
       >
-        <div className="absolute inset-0 border-2 border-dashed border-[#A0A4AB] rotate-45 opacity-100"></div>
+        <div className="absolute inset-0 border-2 border-[#E5E6E9] sm:border-dashed sm:border-[#A0A4AB] rotate-45 opacity-100"></div>
 
         <button
           id="right-btn"
           onClick={handleRightClick}
           ref={rightBtnRef}
-          className="absolute top-1/2 left-[-5%] transform -translate-y-1/2 px-4 py-2 flex items-center gap-6 whitespace-nowrap cursor-pointer"
+          className="absolute sm:top-1/2 top-[85%] sm:left-[-5%] left-[32%] transform -translate-y-1/2 px-4 py-2 items-center sm:gap-6 gap-3 whitespace-nowrap cursor-pointer flex"
         >
-          <div className="text-[14px]">TAKE TEST</div>
-          <div className="w-8 h-8 rotate-45 border border-[#1A1B1C] flex items-center justify-center">
-            <FontAwesomeIcon icon={faPlay} className="w-3 h-3 rotate-70" />
+          <div className="sm:text-[14px] text-[10px]">TAKE TEST</div>
+          <div className="sm:w-8 sm:h-8 w-5 h-5 rotate-45 border border-[#1A1B1C] flex items-center justify-center">
+            <FontAwesomeIcon icon={faPlay} className="sm:text-[16px] text-[8px] rotate-70" />
           </div>
         </button>
       </div>
@@ -106,14 +125,17 @@ const handleRightClick = () => {
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <h1
           ref={titleRef}
-          className="text-8xl font-light text-gray-800 text-center"
+          className=" font-light text-gray-800 text-center
+      md:text-8xl
+      sm:text-6xl
+      text-5xl"
         >
           Sophisticated <br /> skincare
         </h1>
       </div>
 
       {/* bottom text */}
-      <div className="absolute bottom-13 left-3 w-[350px] text-[14px] leading-snug">
+      <div className="absolute sm:text-left text-center sm:left-3 left-47 sm:bottom-13 bottom-70 sm:w-[350px] w-[250px] sm:text-[14px] text-[10px] leading-snug text-[#A0A4AB] sm:text-[#1A1B1C]">
         SKINSTRIC DEVELOPED AN A.I. THAT CREATES A HIGHLY-PERSONALIZED ROUTINE
         TAILORED TO WHAT YOUR SKIN NEEDS.
       </div>

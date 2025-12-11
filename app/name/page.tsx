@@ -76,15 +76,15 @@ export default function Page() {
           {/* Squares */}
           <div
             ref={square1}
-            className="absolute w-[425px] h-[425px] border-2 border-dashed border-[#C0C4CC]"
+            className="absolute sm:w-[425px] sm:h-[425px] w-[225px] h-[225px] border-2 border-dashed sm:border-[#C0C4CC] border-[#E0E3EE]"
           ></div>
           <div
             ref={square2}
-            className="absolute w-[475px] h-[475px] border-2 border-dashed border-[#E0E3EE] rotate-25"
+            className="absolute sm:w-[475px] sm:h-[475px] w-[275px] h-[275px] border-2 border-dashed sm:border-[#E0E3EE] border-[#F0F2F8] rotate-25"
           ></div>
           <div
             ref={square3}
-            className="absolute w-[525px] h-[525px] border-2 border-dashed border-[#F0F2F8] rotate-50"
+            className="absolute sm:w-[525px] sm:h-[525px] w-[325px] h-[325px] border-2 border-dashed sm:border-[#F0F2F8] border-[#F3F4FA] rotate-50"
           ></div>
 
           {/* Center text */}
@@ -99,7 +99,7 @@ export default function Page() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  className="placeholder-[#85898F] text-6xl text-[#85898F] tracking-[-0.04em] bg-transparent underline decoration-[#85898F] decoration-1 underline-offset-8 focus:outline-none text-center"
+                  className="placeholder-[#85898F] sm:text-6xl text-5xl text-[#85898F] tracking-[-0.04em] bg-transparent underline decoration-[#85898F] decoration-1 underline-offset-8 focus:outline-none text-center"
                   autoFocus
                 />
               </>
@@ -115,7 +115,7 @@ export default function Page() {
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  className="placeholder-[#85898F] text-6xl text-[#85898F] tracking-[-0.04em] bg-transparent underline decoration-[#85898F] decoration-1 underline-offset-8 focus:outline-none text-center"
+                  className="placeholder-[#85898F] sm:text-6xl text-5xl text-[#85898F] tracking-[-0.04em] bg-transparent underline decoration-[#85898F] decoration-1 underline-offset-8 focus:outline-none text-center"
                   autoFocus
                 />
               </>

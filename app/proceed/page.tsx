@@ -185,25 +185,25 @@ export default function Page() {
         TO START ANALYSIS
       </div>
 
-      <div className="relative w-full h-screen overflow-hidden flex">
+      <div className="relative w-full h-screen overflow-hidden sm:flex">
         {/* LEFT half */}
-        <div className="w-1/2 flex justify-center items-center relative">
+        <div className="sm:w-1/2 flex justify-center items-center relative">
           <div className="relative  w-[325px] h-[325px]">
             <div
-              className="absolute top-[-5%] left-[8%] w-[275px] h-[275px] border-2 border-dashed border-[#C0C4CC]"
+              className="absolute sm:top-[-5%] sm:left-[8%] top-[40%] left-[30%] sm:w-[275px] sm:h-[275px] w-[150px] h-[150px] border-2 border-dashed sm:border-[#C0C4CC] border-[#F0F2F8]"
               ref={leftSquare1}
             ></div>
             <div
-              className="absolute top-[-5%] left-[8%] w-[300px] h-[300px] border-2 border-dashed border-[#E0E3EE] rotate-25"
+              className="absolute sm:top-[-5%] sm:left-[8%] top-[40%] left-[30%] sm:w-[300px] sm:h-[300px] w-[175px] h-[175px] border-2 border-dashed sm:border-[#E0E3EE] border-[#F0F2F8] rotate-25"
               ref={leftSquare2}
             ></div>
             <div
-              className="absolute top-[-5%] left-[8%] w-[325px] h-[325px] border-2 border-dashed border-[#F0F2F8] rotate-50"
+              className="absolute sm:top-[-5%] sm:left-[8%] top-[40%] left-[30%] sm:w-[325px] sm:h-[325px] w-[200px] h-[200px] border-2 border-dashed border-[#F0F2F8] rotate-50"
               ref={leftSquare3}
             ></div>
           </div>
           <button
-            className="absolute top-[35%] cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105"
+            className="absolute sm:top-[35%] top-[50%] cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105 translate-x-5 sm:translate-x-0"
             onClick={handleCameraClick}
           >
             <Image
@@ -211,6 +211,7 @@ export default function Page() {
               alt="camera"
               width={150}
               height={150}
+              className="sm:w-[150px] sm:h-[150px] w-[120px] h-[120px]"
             />
           </button>
 
@@ -220,11 +221,11 @@ export default function Page() {
             alt="line"
             width={75}
             height={75}
-            className="absolute top-[33%] left-[57.5%]"
+            className="absolute top-[33%] left-[57.5%] hidden sm:block"
           />
 
           {/* TEXT TO THE RIGHT */}
-          <div className="absolute top-[31.5%] left-[68%] text-left text-[13px] font-medium leading-[1.8]">
+          <div className="absolute sm:top-[31.5%] sm:left-[68%] top-[90%] left-[45%] text-left sm:text-[13px] text-[11px] font-medium leading-[1.8]">
             ALLOW A.I.
             <br />
             TO SCAN YOUR FACE
@@ -235,15 +236,15 @@ export default function Page() {
         <div className="w-1/2 flex justify-center items-center">
           <div className="relative w-[325px] h-[325px] flex justify-center items-center">
             <div
-              className="absolute top-[-5%] left-[8%] w-[275px] h-[275px] border-2 border-dashed border-[#C0C4CC]"
+              className="absolute sm:top-[-5%] sm:left-[8%] top-[30%] left-[75%] sm:w-[275px] sm:h-[275px] w-[150px] h-[150px] border-2 border-dashed sm:border-[#C0C4CC] border-[#F0F2F8]"
               ref={rightSquare1}
             ></div>
             <div
-              className="absolute top-[-5%] left-[8%] w-[300px] h-[300px] border-2 border-dashed border-[#E0E3EE] rotate-25"
+              className="absolute sm:top-[-5%] sm:left-[8%] top-[30%] left-[75%] sm:w-[300px] sm:h-[300px] w-[175px] h-[175px] border-2 border-dashed sm:border-[#E0E3EE] border-[#F0F2F8] rotate-25"
               ref={rightSquare2}
             ></div>
             <div
-              className="absolute top-[-5%] left-[8%] w-[325px] h-[325px] border-2 border-dashed border-[#F0F2F8] rotate-50"
+              className="absolute sm:top-[-5%] sm:left-[8%] top-[30%] left-[75%] sm:w-[325px] sm:h-[325px] w-[200px] h-[200px] border-2 border-dashed border-[#F0F2F8] rotate-50"
               ref={rightSquare3}
             ></div>
           </div>
@@ -253,7 +254,7 @@ export default function Page() {
               alt="line"
               width={75}
               height={75}
-              className="absolute top-[49%] left-[66.5%] rotate-180"
+              className="absolute top-[49%] left-[66.5%] rotate-180 hidden sm:block"
             />
             <input
               ref={fileInputRef}
@@ -264,16 +265,17 @@ export default function Page() {
             />
             <button
               onClick={handleGalleryClick}
-              className="absolute top-[35%] left-[70%] cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105"
+              className="absolute sm:top-[35%] sm:left-[70%] top-[57%] left-[45%] cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105"
             >
               <Image
                 src="/gallery.png"
                 alt="gallery"
                 width={150}
                 height={150}
+                className="sm:w-[150px] sm:h-[150px] w-[120px] h-[120px]"
               />
             </button>
-            <div className="absolute top-[56.5%] left-[57.5%] text-right text-[13px] font-medium leading-[1.8]">
+            <div className="absolute sm:top-[56.5%] sm:left-[57.5%] top-[75%] left-[45%] text-right sm:text-[13px] text-[11px] font-medium leading-[1.8]">
               ALLOW A.I.
               <br />
               TO ACCESS GALLERY
@@ -332,14 +334,14 @@ export default function Page() {
                 width={150}
                 height={150}
               />
-              <span className="text-[14px] font-semibold text-[#1A1B1C]">
+              <span className="sm:text-[14px] text-[10px] font-semibold text-[#1A1B1C]">
                 SETTING UP CAMERA
               </span>
             </div>
           </div>
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-base text-[#1A1B1C] text-center flex flex-col gap-6">
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-sm sm:text-base text-[#1A1B1C] text-center flex flex-col gap-6">
             <div>TO GET BETTER RESULTS MAKE SURE YOU HAVE</div>
-            <div className="flex gap-8 justify-center">
+            <div className="flex gap-8 justify-center text-xs sm:text-sm">
               <div>◇ NEUTRAL EXPRESSION</div>
               <div>◇ FRONTAL POSE</div>
               <div>◇ ADEQUATE LIGHTING</div>
