@@ -21,6 +21,48 @@ export default function Page() {
 
   const router = useRouter();
 
+  const [error, setError] = useState(""); // <-- new state for error
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault(); // prevent default form submission/reload
+      const nameRegex = /^[a-zA-Z\s'-]+$/; // allowed characters
+
+      if (stage === "name") {
+        const value = e.currentTarget.value.trim();
+        if (value === "") {
+          setError("Name cannot be empty");
+        } else if (!nameRegex.test(value)) {
+          setError(
+            "Please enter a valid name without numbers or special characters"
+          );
+        } else {
+          setError(""); // clear error
+          setName(value);
+          localStorage.setItem("userName", value);
+          setStage("location"); // move to next stage only if valid
+        }
+      }
+
+      if (stage === "location") {
+        const value = e.currentTarget.value.trim();
+        if (value === "") {
+          setError("Location cannot be empty");
+        } else if (!nameRegex.test(value)) {
+          setError(
+            "Please enter a valid location without numbers or special characters"
+          );
+        } else {
+          setError("");
+          setLocation(value);
+          localStorage.setItem("userLocation", value);
+          setStage("loading"); // move to loading only if valid
+          setTimeout(() => setStage("thankYou"), 2000);
+        }
+      }
+    }
+  };
+
   const handleProceed = () => {
     router.push("/proceed"); // Navigate to your proceed/page.tsx
   };
@@ -45,21 +87,6 @@ export default function Page() {
       ease: "linear",
     });
   }, []);
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      if (stage === "name" && name.trim() !== "") {
-        setStage("location");
-      } else if (stage === "location" && location.trim() !== "") {
-        // Simulate submission
-        setStage("loading");
-        setTimeout(() => {
-          // Here you can POST to your API with { name, location }
-          setStage("thankYou");
-        }, 2000); // 2 seconds "Processing Submission"
-      }
-    }
-  };
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
@@ -97,11 +124,18 @@ export default function Page() {
                   type="text"
                   placeholder="Introduce Yourself"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    localStorage.setItem("userName", e.target.value);
+                    if (error) setError(""); // clear error when typing
+                  }}
                   onKeyDown={handleKeyDown}
                   className="placeholder-[#85898F] sm:text-6xl text-5xl text-[#85898F] tracking-[-0.04em] bg-transparent underline decoration-[#85898F] decoration-1 underline-offset-8 focus:outline-none text-center"
                   autoFocus
                 />
+                {error && (
+                  <div className="text-red-500 text-[12px] mt-2">{error}</div>
+                )}
               </>
             )}
             {stage === "location" && (
@@ -113,11 +147,17 @@ export default function Page() {
                   type="text"
                   placeholder="Enter Location"
                   value={location}
-                  onChange={(e) => setLocation(e.target.value)}
+                  onChange={(e) => {
+                    setLocation(e.target.value);
+                    localStorage.setItem("userLocation", e.target.value);
+                  }}
                   onKeyDown={handleKeyDown}
                   className="placeholder-[#85898F] sm:text-6xl text-5xl text-[#85898F] tracking-[-0.04em] bg-transparent underline decoration-[#85898F] decoration-1 underline-offset-8 focus:outline-none text-center"
                   autoFocus
                 />
+                {error && (
+                  <div className="text-red-500 text-[12px] mt-2">{error}</div>
+                )}
               </>
             )}
             {stage === "loading" && (
@@ -131,7 +171,9 @@ export default function Page() {
             {stage === "thankYou" && (
               <div className="flex flex-col gap-4">
                 <div className="text-2xl text-[#4F5257]">Thank you!</div>
-                <div className="text-xl text-[#4F5257]">Proceed for the next step</div>
+                <div className="text-xl text-[#4F5257]">
+                  Proceed for the next step
+                </div>
               </div>
             )}
           </div>
