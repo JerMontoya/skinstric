@@ -204,9 +204,9 @@ export default function Page() {
         </Link>
 
         {/* Centered text block */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-base text-[#FCFCFC] text-center flex flex-col gap-6">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm sm:text-base text-[#FCFCFC] text-center flex flex-col gap-6">
           <div>TO GET BETTER RESULTS MAKE SURE YOU HAVE</div>
-          <div className="flex gap-8 justify-center">
+          <div className="flex gap-8 justify-center text-xs sm:text-sm">
             <div>◇ NEUTRAL EXPRESSION</div>
             <div>◇ FRONTAL POSE</div>
             <div>◇ ADEQUATE LIGHTING</div>

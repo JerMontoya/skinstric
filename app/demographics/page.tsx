@@ -89,15 +89,15 @@ export default function Page() {
 
       <div className="absolute top-20 left-9 leading-relaxed">
         <div className="text-[15px] font-semibold mb-1">A.I ANALYSIS</div>
-        <div className="text-7xl tracking-tighter">DEMOGRAPHICS</div>
+        <div className="sm:text-7xl text-4xl tracking-tighter">DEMOGRAPHICS</div>
         <div className="text-[14px]">PREDICTED RACE & AGE</div>
       </div>
 
-      <div className="flex items-center justify-between relative p-8">
+      <div className="flex flex-col sm:flex-row items-center justify-between relative p-8">
         {/* LEFT CARDS */}
-        <div>
+        <div className="w-full sm:w-42">
           <div
-            className={`absolute border-t border-black w-42 h-[82px] top-[235px] left-8 p-4 cursor-pointer ${
+            className={`sm:absolute static border-t border-black w-full sm:w-42 h-[82px] sm:top-[235px] sm:mt-0 mt-45 mb-3 sm:left-8 p-4 cursor-pointer ${
               selectedCategory === "race"
                 ? "bg-[#1A1B1C] text-white"
                 : "bg-[#E1E1E2] text-black"
@@ -113,7 +113,7 @@ export default function Page() {
           </div>
 
           <div
-            className={`absolute border-t border-black w-42 h-[82px] top-[330px] left-8 p-4 cursor-pointer ${
+            className={`sm:absolute static mb-3 border-t border-black w-full sm:w-42 h-[82px] top-[330px] left-8 p-4 cursor-pointer ${
               selectedCategory === "age"
                 ? "bg-[#1A1B1C] text-white"
                 : "bg-[#E1E1E2] text-black"
@@ -127,7 +127,7 @@ export default function Page() {
           </div>
 
           <div
-            className={`absolute border-t border-black w-42 h-[82px] top-[425px] left-8 p-4 cursor-pointer ${
+            className={`sm:absolute static mb-3 border-t border-black w-full sm:w-42 h-[82px] top-[425px] left-8 p-4 cursor-pointer ${
               selectedCategory === "gender"
                 ? "bg-[#1A1B1C] text-white"
                 : "bg-[#F3F3F4] text-black"
@@ -145,8 +145,8 @@ export default function Page() {
         </div>
 
         {/* MIDDLE PANEL */}
-        <div className="absolute w-[925px] h-[425px] top-[235px] left-54 opacity-100 bg-[#F3F3F4] flex justify-between border-t border-black">
-          <div className="text-[44px] ml-4">
+        <div className="sm:absolute static mb-5 w-full sm:w-[925px] h-[425px] top-[235px] left-54 opacity-100 bg-[#F3F3F4] flex justify-between border-t border-black">
+          <div className="hidden sm:block text-[44px] ml-4">
             {selectedRace
               ? selectedRace.charAt(0).toUpperCase() + selectedRace.slice(1)
               : ""}
@@ -188,7 +188,7 @@ export default function Page() {
         </div>
 
         {/* RIGHT PANEL: Full race data */}
-        <div className="absolute border-t border-black w-[330px] h-[425px] top-[235px] right-8 opacity-100 bg-[#F3F3F4]">
+        <div className="sm:absolute static mb-10 border-t border-black w-full sm:w-[330px] h-[425px] top-[235px] right-8 opacity-100 bg-[#F3F3F4]">
           <div className="flex justify-between p-4">
             <div className="text-[16px] text-[#1A1B1C] font-medium tracking-tighter">
               {selectedCategory.toUpperCase()}
@@ -235,7 +235,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="fixed bottom-2 left-0 w-full px-8 flex justify-between items-center">
+      <div className="fixed bottom-2 left-0 w-full px-8 flex justify-between items-center  bg-white">
         {/* Left: Back button */}
         <Link href="/analysis">
           <button className="px-4 py-2 flex items-center gap-4 whitespace-nowrap cursor-pointer">
@@ -251,7 +251,7 @@ export default function Page() {
         </Link>
 
         {/* Center: Info text */}
-        <div className="text-base text-[#A0A4AB] text-center">
+        <div className="sm:text-base text-[13px] text-[#A0A4AB] text-center">
           If A.I. estimate is wrong, select the correct one.
         </div>
 
